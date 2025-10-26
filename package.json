@@ -1,0 +1,28 @@
+{
+  "name": "@arczinosek/polish-numeral-parser",
+  "version": "0.0.0",
+  "description": "Library for parsing Polish verbal notation of numbers into their digital (numerical) representation.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --outDir ./dist/ --declaration ./src/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arczinosek/polish-numeral-parser-js.git"
+  },
+  "keywords": [
+    "parser",
+    "polish-number",
+    "number-parser"
+  ],
+  "author": "Boris Grishenko <arczinosek@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arczinosek/polish-numeral-parser-js/issues"
+  },
+  "homepage": "https://github.com/arczinosek/polish-numeral-parser-js#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
