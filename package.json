@@ -1,16 +1,23 @@
 {
   "name": "@arczinosek/polish-numeral-parser",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Library for parsing Polish verbal notation of numbers into their digital (numerical) representation.",
-  "main": "dist/index.js",
+  "type": "module",
+  "main": "dist/bundle.mjs",
+  "types": "dist/bundle.d.mts",
   "scripts": {
-    "build": "tsc --outDir ./dist/ --declaration ./src/*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c --failAfterWarnings",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "vitest --run"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arczinosek/polish-numeral-parser-js.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "parser",
     "polish-number",
@@ -23,6 +30,14 @@
   },
   "homepage": "https://github.com/arczinosek/polish-numeral-parser-js#readme",
   "devDependencies": {
-    "typescript": "^5.9.3"
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^24.10.0",
+    "prettier": "3.6.2",
+    "rollup": "^4.52.5",
+    "rollup-plugin-dts": "^6.2.3",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.7"
   }
 }
