@@ -6,10 +6,12 @@
   "main": "dist/bundle.mjs",
   "types": "dist/bundle.d.mts",
   "scripts": {
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
     "build": "rollup -c --failAfterWarnings",
+    "test": "vitest --run",
     "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "test": "vitest --run"
+    "format:check": "prettier . --check"
   },
   "repository": {
     "type": "git",
