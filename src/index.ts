@@ -1,1 +1,2 @@
-export { parseVerbalNumberPl } from './parser';
+export { stripPolishDiacritics } from './normalize';
+export { parseVerbalNumberPl, NUMBERS_DICTIONARY } from './parser';

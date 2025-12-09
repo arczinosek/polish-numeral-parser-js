@@ -1,2 +1,4 @@
-singleQuote: true
-quoteProps: consistent
+{
+  "singleQuote": true,
+  "quoteProps": "consistent"
+}

@@ -10,11 +10,40 @@ npm install --save @arczinosek/polish-numeral-parser
 
 ## Usage
 
+### parseVerbalNumberPl
+
 ```js
 import { parseVerbalNumberPl } from '@arczinosek/polish-numeral-parser';
 
-const value = parseVerbalNumberPl('sto dwadzieścia trzy tysiące czterysta pięćdziesiąt sześć złotych siedemdziesiąt osiem groszy');
+const value = parseVerbalNumberPl(
+  'sto dwadzieścia trzy tysiące czterysta pięćdziesiąt sześć złotych siedemdziesiąt osiem groszy',
+);
 // value: 123456.78
+```
+
+### NUMBERS_DICTIONARY
+
+```js
+import { NUMBERS_DICTIONARY } from '@arczinosek/polish-numeral-parser';
+
+console.log(NUMBERS_DICTIONARY);
+
+// [
+//   'zero',             'jeden',              'jednego',
+//   'dziesiec',         'dziesieciu',         'jedenascie',
+// ...
+```
+
+### stripPolishDiacritics
+
+Replaces all polish diacritics with non-diacritic equivalents.
+
+```js
+import { stripPolishDiacritics } from '@arczinosek/polish-numeral-parser';
+
+const stripped = stripPolishDiacritics('ĄĆĘŁŃÓŚŻŹąćęłńóśżź');
+
+// stripped: ACELNOSZZacelnoszz
 ```
 
 ## Contributing
