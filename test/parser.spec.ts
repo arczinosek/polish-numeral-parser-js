@@ -21,6 +21,10 @@ describe('parseVerbalNumberPl', () => {
       expected: 1_100_000.37,
     },
     {
+      line: 'trzynastu milionów stu tysięcy dwudziestu trzech zł dwanaście gr',
+      expected: 13_100_023.12,
+    },
+    {
       line: 'zero złotych dziewięćdziesiąt groszy',
       expected: 0.9,
     },
