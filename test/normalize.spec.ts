@@ -1,21 +1,23 @@
 import { describe, expect, it } from 'vitest';
-import { normalize } from '../src/normalize.js';
+import { normalize, stripPolishDiacritics } from '../src/normalize.js';
 
 describe('normalize', () => {
-  it('should replace polish letters', () => {
-    const input = 'ąćęłńóśżźźżśóńłęćą';
-    const expected = 'acelnoszzzzsonleca';
+  it('should lowercase, trim, replace multiplied spaces with one and strip polish diactirics', () => {
+    const input = '  ZAŻÓŁĆ gęślą  jaźń ';
+    const expected = 'zazolc gesla jazn';
 
     const result = normalize(input);
 
     expect(result).toStrictEqual(expected);
   });
+});
 
-  it('should replace multiplied spaces with one', () => {
-    const input = ' sto  dwadzieścia    dziewięć tysięcy  ';
-    const expected = 'sto dwadziescia dziewiec tysiecy';
+describe('stripPolishDiacritics', () => {
+  it('should replace polish diacritics with non-diacritic equivalents', () => {
+    const input = 'ąćęłńóśżź ŹŻŚÓŃŁĘĆĄ ąćęłńóśżź ŹŻŚÓŃŁĘĆĄ';
+    const expected = 'acelnoszz ZZSONLECA acelnoszz ZZSONLECA';
 
-    const result = normalize(input);
+    const result = stripPolishDiacritics(input);
 
     expect(result).toStrictEqual(expected);
   });
