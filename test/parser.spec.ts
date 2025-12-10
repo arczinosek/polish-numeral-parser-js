@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { parseVerbalNumberPl } from '../src';
+import { UnknownWordError } from '../src/parser';
 
 describe('parseVerbalNumberPl', () => {
   const cases = [
@@ -38,5 +39,20 @@ describe('parseVerbalNumberPl', () => {
     const result = parseVerbalNumberPl(line);
 
     expect(result).toStrictEqual(expected);
+  });
+
+  it('should skip unknown words by default', () => {
+    const sentence = 'tysiąc dwieście zł xxx gr';
+
+    const parsed = parseVerbalNumberPl(sentence);
+
+    expect(parsed).toStrictEqual(1200);
+  });
+
+  it('should throw UnknownWordError when unknown word occures and skipping is disabled', () => {
+    const sentence = 'tysiąc dwieście zł xxx gr';
+    const expectedError = new UnknownWordError('Unknown word in a sentence', 'xxx', sentence);
+
+    expect(() => parseVerbalNumberPl(sentence, false)).toThrowError(expectedError);
   });
 });

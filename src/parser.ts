@@ -103,9 +103,19 @@ const DICT_CURRENCY = new Map<string, number>([
   ['zlotych', 1],
 ]);
 
+export class UnknownWordError extends Error {
+  constructor(
+    message: string,
+    public readonly word: string,
+    public readonly sentence: string,
+  ) {
+    super(message);
+  }
+}
+
 export const NUMBERS_DICTIONARY = [...Array.from(DICT_NUMBERS.keys()), ...Array.from(DICT_MULTIPLIERS.keys())];
 
-export const parseVerbalNumberPl = (input: string): number => {
+export const parseVerbalNumberPl = (input: string, skipUnknownErrors: boolean = true): number => {
   const words = normalize(input).split(' ');
 
   let total = 0.0;
@@ -140,8 +150,8 @@ export const parseVerbalNumberPl = (input: string): number => {
       current *= currency;
       total += current;
       current = 0.0;
-    } else {
-      console.warn('Nothing found', { word });
+    } else if (!skipUnknownErrors) {
+      throw new UnknownWordError('Unknown word in a sentence', word, input);
     }
   }
 

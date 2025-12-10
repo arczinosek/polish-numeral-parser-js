@@ -1,6 +1,8 @@
 # Polish numeral parser JS
 
-`polish-numeral-parser-js` is a JavaScript library used to parse verbal numbers in Polish into JS `number` values. It was created primarily for the purpose of parsing amounts written in words.
+`polish-numeral-parser-js` is a JavaScript library used to parse verbal numbers
+in Polish into JS `number` values. It was created primarily for the purpose of
+parsing amounts written in words.
 
 ## Installation
 
@@ -12,6 +14,9 @@ npm install --save @arczinosek/polish-numeral-parser
 
 ### parseVerbalNumberPl
 
+It parses given string and returns a number value. By default it skips unknown
+words.
+
 ```js
 import { parseVerbalNumberPl } from '@arczinosek/polish-numeral-parser';
 
@@ -21,7 +26,21 @@ const value = parseVerbalNumberPl(
 // value: 123456.78
 ```
 
+Set the second parameter to false to generate an `UnknownWordError` when an
+unknown word is encountered.
+
+```js
+import { parseVerbalNumberPl } from '@arczinosek/polish-numeral-parser';
+
+const value = parseVerbalNumberPl('jeden foo dwa bar', false);
+
+// throws UnknownWordError with `word: string` and `sentence: string` properties.
+// Property `word` contais only first unrecognized word.
+```
+
 ### NUMBERS_DICTIONARY
+
+An array of all words that can be recognized (after normalization).
 
 ```js
 import { NUMBERS_DICTIONARY } from '@arczinosek/polish-numeral-parser';
