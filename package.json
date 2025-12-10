@@ -3,8 +3,15 @@
   "version": "0.0.3",
   "description": "Library for parsing Polish verbal notation of numbers into their digital (numerical) representation.",
   "type": "module",
-  "main": "dist/bundle.mjs",
-  "types": "dist/bundle.d.mts",
+  "main": "dist/polish-numeral-parser.cjs",
+  "types": "dist/polish-numeral-parser.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/polish-numeral-parser.mjs",
+      "require": "./dist/polish-numeral-parser.cjs",
+      "types": "./dist/polish-numeral-parser.d.mts"
+    }
+  },
   "scripts": {
     "prepare": "npm run build",
     "prepublishOnly": "npm test",
