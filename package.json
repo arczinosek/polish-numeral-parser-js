@@ -1,6 +1,6 @@
 {
   "name": "@arczinosek/polish-numeral-parser",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Library for parsing Polish verbal notation of numbers into their digital (numerical) representation.",
   "type": "module",
   "main": "dist/polish-numeral-parser.cjs",
